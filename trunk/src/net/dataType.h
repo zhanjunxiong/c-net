@@ -6,6 +6,8 @@
 extern "C" {
 #endif
 
+typedef long long int64;
+
 typedef unsigned char uint8;
 typedef char int8;
 

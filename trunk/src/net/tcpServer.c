@@ -124,6 +124,9 @@ uint32 startTcpServer(struct tcpServer* server) {
 
 void stopTcpServer(struct tcpServer* server) {
 	myAssert(server != NULL);
+	if (server->baseLoop) {
+		aeDeleteFileEvent(server->baseLoop->loop, server->listenfd, AE_READABLE);
+	}
 	if (server->listenfd) {
 		close(server->listenfd);
 	}
