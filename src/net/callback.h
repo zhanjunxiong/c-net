@@ -6,6 +6,8 @@
 extern "C" {
 #endif
 
+#include "dataType.h"
+
 typedef enum RetHandle {
 	CONTINUE		=	0,
 	SHUTDOWN	=	1,
@@ -18,6 +20,8 @@ typedef void onConnection(struct session* session, void* privateData);
 typedef RetHandle onData(struct session* session, void* privateData);
 typedef void onDisConnection(struct session* session, void* privateData);
 typedef	void onWriteComplete(struct session* session);
+
+typedef int32 onTimeCallBack(void* arg);
 
 typedef struct ICallBack {
 	onConnection* connectionCallBack;

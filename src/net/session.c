@@ -37,7 +37,7 @@ void destroySession(struct session* session) {
 		zfree(session->callBackHandle);
 	}
 
-	if (session->cfd) {
+	if (session->cfd >= 0) {
 		close(session->cfd);
 	}
 

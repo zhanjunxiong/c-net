@@ -58,6 +58,8 @@ int anetNonBlock(char *err, int fd);
 int anetTcpNoDelay(char *err, int fd);
 int anetTcpKeepAlive(char *err, int fd);
 
+int anetTcpConnectEx(char *err, char *addr, int port, int* flag);
+
 #ifdef _cplusplus
 }
 #endif

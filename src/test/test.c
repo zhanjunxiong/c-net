@@ -16,6 +16,11 @@
 
 void handleConnection(struct session* session, void* privateData) {
 	mylog(LOG_INFO, "onConnection");
+	char* test = "HELLO WORLD!!!";
+	struct buffer* sendbuf = initBuffer(strlen(test));
+	appendBuffer(sendbuf, test, strlen(test));
+	writeSession(session, sendbuf);
+	destroyBuffer(sendbuf);
 }
 
 RetHandle handleData(struct session* session, void* privateData) {
