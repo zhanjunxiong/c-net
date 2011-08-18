@@ -184,9 +184,9 @@ struct eventMsgqueue *initMsgqueue(aeEventLoop* eventLoop, unsigned int maxSize,
 
 void destroyMsgqueue(struct eventMsgqueue *msgq)
 {
-   for( ; lengthMsgqueue(msgq) > 0; ) {
-	   sleep( 1 );
-   }
+   //for( ; lengthMsgqueue(msgq) > 0; ) {
+	//   sleep( 1 );
+   //}
 
    aeDeleteFileEvent(msgq->el, msgq->popFd, AE_READABLE);
    pthread_mutex_destroy(&msgq->lock);

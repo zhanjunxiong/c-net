@@ -274,6 +274,11 @@ int32 sendSessionEvent(struct eventLoop* loop, struct session* session, struct b
 		return -1;
 	}
 
+	if (loop->state != EVENTLOOP_RUN) {
+		mylog(LOG_INFO, "LOOP NOT IN EVENTLOOP");
+		return -1;
+	}
+
 	if (gettid() == loop->pid) {
 		writeSession(session, sendBuf);
 	} else {
@@ -289,6 +294,11 @@ int32 sendSessionEvent(struct eventLoop* loop, struct session* session, struct b
 int32 connectEvent(struct eventLoop* loop, struct tcpClient* tcpClient) {
 	myAssert(loop != NULL && tcpClient != NULL);
 	if (loop->state != EVENTLOOP_RUN) {
+		return -1;
+	}
+
+	if (loop->state != EVENTLOOP_RUN) {
+		mylog(LOG_INFO, "LOOP NOT IN EVENTLOOP");
 		return -1;
 	}
 

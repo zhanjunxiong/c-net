@@ -38,6 +38,7 @@ void startEventLoopThreadPool(struct eventLoopThreadPool* threadPool) {
 	uint32 i;
 	for (i = 0; i < threadPool->threadNum; i++) {
 		startEventLoopThread(threadPool->thread[i]);
+		mylog(LOG_INFO, "start eventLoop thread [%d]", i);
 	}
 	threadPool->state = RUNNING;
 }
@@ -47,6 +48,7 @@ void stopEventLoopThreadPool(struct eventLoopThreadPool* threadPool) {
 	uint32 i;
 	for (i = 0; i < threadPool->threadNum; i++) {
 		stopEventLoopThread(threadPool->thread[i]);
+		mylog(LOG_INFO, "stop eventLoop thread [%d]", i);
 	}
 	threadPool->state = STOP;
 }

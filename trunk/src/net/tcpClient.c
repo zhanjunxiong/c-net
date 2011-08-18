@@ -132,4 +132,8 @@ int32 startTcpClient(struct tcpClient* tcpClient) {
 void stopTcpClient(struct tcpClient* tcpClient) {
 	myAssert(tcpClient != NULL);
 	tcpClient->state = tcpClient_kDisconnected;
+	if (tcpClient->session) {
+		removeSessionEvent(tcpClient->eventLoop, tcpClient->session);
+		tcpClient->session = NULL;
+	}
 }
