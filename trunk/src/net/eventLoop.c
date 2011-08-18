@@ -229,11 +229,9 @@ int32 updateSessionEvent(struct eventLoop* loop, struct session* session) {
 	if (gettid() == loop->pid) {
 		session->loop = loop;
 		if (session->mask & SESSION_WRITABLE) {
-			mylog(LOG_INFO, "111111111111111111");
 			aeCreateFileEvent(loop->loop, session->cfd, AE_WRITABLE, onWriteSession, session);
 		}
 		if (session->mask & SESSION_READABLE) {
-			mylog(LOG_INFO, "222222222222222222");
 			aeCreateFileEvent(loop->loop, session->cfd, AE_READABLE, onReadSession, session);
 		}
 	} else {
